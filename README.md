@@ -21,10 +21,15 @@ It demonstrates how keylogging and periodic screen capture can be performed usin
 - os
 
 ## How to Run
-1. Open terminal and activate your Python environment
-2. Run the script:
-3. The script will log keystrokes to `keystrokes.txt` and save screenshots
-4. Press `Ctrl + C` to stop the script
+1. Open Command Prompt and navigate to the project folder  
+2. Activate the virtual environment:  
+   venv\Scripts\activate  
+3. Run the script:  
+   python keylogger.py  
+4. The script will begin logging keystrokes and capturing screenshots every 10 seconds  
+5. To stop the script, press:  
+   Ctrl + C
+
 
 ## Note
 All logs and screenshots are excluded from version control using `.gitignore` for privacy and security reasons.

